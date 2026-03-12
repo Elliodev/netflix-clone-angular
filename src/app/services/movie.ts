@@ -13,4 +13,9 @@ export class Movie {
     const url = `${environment.tmdbBaseUrl}/trending/all/week?api_key=${environment.tmdbApiKey}`;
     return this.http.get(url);
   }
+
+  getMovieByType(type: string) {
+    const url = `${environment.tmdbBaseUrl}${type}?api_key=${environment.tmdbApiKey}`;
+    return this.http.get<any>(url);
+  }
 }
