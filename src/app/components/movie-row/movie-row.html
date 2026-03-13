@@ -1,5 +1,7 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <div class="relative group px-8 py-4">
-  
   <h2 class="text-white text-2xl font-semibold mb-4">{{ title }}</h2>
 
   <button
@@ -9,25 +11,24 @@
     〈
   </button>
 
-  <div 
-    #movieRow 
-    class="flex overflow-x-scroll gap-4 no-scrollbar pb-4 scroll-smooth"
-  >
+  <div #movieRow class="flex overflow-x-scroll gap-4 no-scrollbar pb-4 scroll-smooth">
     @for (movie of movies; track movie.id) {
-      <div class="min-w-[160px] md:min-w-[200px] transition-transform duration-300 hover:scale-105 cursor-pointer">
+      <div
+        class="min-w-[280px] md:min-w-[340px] transition-transform duration-300 hover:scale-105 cursor-pointer"
+      >
         <img
-          [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+          [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path"
           [alt]="movie.title || movie.name"
           class="rounded-md shadow-lg"
         />
       </div>
     }
   </div>
-
   <button
     (click)="scroll(movieRow, 'right')"
-    class="absolute right-0 top-1/2 z-20 hidden h-[70%] -translate-y-1/2 bg-black/50 px-2 text-white group-hover:block hover:bg-black/80 transition-all"
+    class="absolute right-0 top-1/2 z-20 hidden h-[70%] -translate-y-1/2 px-2 text-white group-hover:block hover: transition-all"
   >
-    〉
+    <i class="fa-solid fa-angle-right text-3xl"></i>
   </button>
+
 </div>
