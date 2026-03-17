@@ -1,19 +1,32 @@
 .hero-container {
+    height: 110vh;
+    margin-bottom: -200px;
     animation: fadeIn 1.5s ease-in-out;
 
-    height: 90vh;
-    position: relative;
 
     &::after {
-        content: "";
+        content: '';
         position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to bottom,
-            transparent 50%,
-            rgba(20, 20, 20, 0.8) 80%,
-            rgb(20, 20, 20) 100ù
-        );
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 280px;
+        background: linear-gradient(to bottom, transparent, #141414);
+    }
+
+    .play-btn {
+        background-color: white;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    }
+    .info-btn {
+        background-color: rgba(109, 108, 107, 0.6);
+
+        &:hover {
+            background-color: rgba(109, 108, 107, 0.5);
+        }
     }
 }
 

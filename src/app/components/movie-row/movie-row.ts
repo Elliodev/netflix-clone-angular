@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input, OnInit } from '@angular/core';
 import { Movie } from '../../services/movie';
 
 @Component({
@@ -9,6 +9,7 @@ import { Movie } from '../../services/movie';
 })
 export class MovieRow implements OnInit {
   private movieService = inject(Movie);
+  private cdr = inject(ChangeDetectorRef);
 
   @Input() title = '';
   @Input() movieType = '';
@@ -19,6 +20,8 @@ export class MovieRow implements OnInit {
     this.movieService.getMovieByType(this.movieType).subscribe((res) => {
       setTimeout(() => {
         this.movies = res.results;
+
+        this.cdr.detectChanges();
       }, 0);
     })
   }
