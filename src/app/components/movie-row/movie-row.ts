@@ -13,6 +13,7 @@ export class MovieRow implements OnInit {
 
   @Input() title = '';
   @Input() movieType = '';
+  @Input() isHorizontal = true;
 
   movies: any[] = [];
 
@@ -27,11 +28,13 @@ export class MovieRow implements OnInit {
   }
 
   scroll(el: HTMLElement, direction: 'left' | 'right') {
-    const scrollAmount = 500;
-    if (direction === 'left') {
-      el.scrollLeft -= scrollAmount;
-    } else {
-      el.scrollLeft += scrollAmount;
-    }
-  }
+  const step = el.clientWidth * 0.8; // On défile de 80% de la largeur visible
+  const currentScroll = el.scrollLeft;
+  const targetScroll = direction === 'left' ? currentScroll - step : currentScroll + step;
+
+  el.scrollTo({
+    left: targetScroll,
+    behavior: 'smooth'
+  });
+}
 }
