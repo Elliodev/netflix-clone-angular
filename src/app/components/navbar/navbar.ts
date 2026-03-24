@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
+import { Profile } from '../../services/profile';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +8,8 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  readonly serviceProfile = inject(Profile);
+
   isScrolled : boolean = false
 
   @HostListener('window:scroll', [])

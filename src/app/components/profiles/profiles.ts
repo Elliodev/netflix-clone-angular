@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Profile } from '../../services/profile';
+import { IProfile } from '../../models/profile';
 
 @Component({
   selector: 'app-profiles',
@@ -32,8 +34,11 @@ export class Profiles {
   ]
 
   private router = inject(Router);
+  private serviceProfile = inject(Profile);
 
-  goToHome() {
+  goToHome(profile: IProfile) {
+    this.serviceProfile.selectProfile(profile)
+
     this.router.navigate(['/home']);
   }
 }
