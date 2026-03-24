@@ -18,4 +18,9 @@ export class Movie {
     const url = `${environment.tmdbBaseUrl}${type}?api_key=${environment.tmdbApiKey}`;
     return this.http.get<any>(url);
   }
+
+  searchMovies(query: string) {
+    const url = `${environment.tmdbBaseUrl}/search/movie?api_key=${environment.tmdbApiKey}&query=${query}`;
+    return this.http.get<any>(url);
+  }
 }
